@@ -29,7 +29,7 @@ def callback():
     try:
         print(2)
         hash = hmac.new(CHANNEL_SECRET.encode('utf-8'),
-                        request.get_data(as_text).encode('utf-8'),
+                        request.get_data(as_text=True).encode('utf-8'),
                         hashlib.sha256).digest()
         signature = base64.b64encode(hash)
         if signature != request.headers['X-Line-Signature']:
