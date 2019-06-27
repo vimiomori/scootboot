@@ -22,13 +22,7 @@ def callback():
     print(1)
     body = request.get_data(as_text=True)
 
-    # get request body as text
-    print(body)
-    #app.logger.info("Request body: " + body)
-
-    # handle webhook body
     try:
-        print(2)
         hash = hmac.new(CHANNEL_SECRET.encode('utf-8'),
                         body.encode('utf-8'),
                         hashlib.sha256).digest()
@@ -37,7 +31,8 @@ def callback():
         #     print(3)
         #     raise InvalidSignatureError
         for event in request.get_json()["events"]:
-            print(type(event))
+            print(event)
+            print(event['source']['userId'])
             Handler.handle(event)
     except InvalidSignatureError:
         abort(400)
