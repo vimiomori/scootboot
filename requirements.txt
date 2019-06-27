@@ -1,3 +1,5 @@
 sqlalchemy
 alembic
+flask
+line-bot-sdk
 requests
