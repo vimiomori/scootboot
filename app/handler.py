@@ -36,8 +36,8 @@ class Handler:
             "replyToken": self.reply_token,
             "messages": [
                 {
-                    "type":"text",
-                    "text":msg
+                    "type":"image",
+                    "originalContentUrl":msg
                 }
             ]
         })
