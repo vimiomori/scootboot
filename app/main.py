@@ -19,6 +19,7 @@ CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
 
 @app.route("/callback", methods=['POST'])
 def callback():
+    print(1)
     body = request.get_json()
 
     # get request body as text
@@ -26,6 +27,7 @@ def callback():
 
     # handle webhook body
     try:
+        print(2)
         hash = hmac.new(CHANNEL_SECRET.encode('utf-8'),
                         request.get_data(as_text).encode('utf-8'),
                         hashlib.sha256).digest()
