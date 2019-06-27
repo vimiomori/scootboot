@@ -1,6 +1,6 @@
 from flask import Flask, request, abort
 from linebot.exceptions import InvalidSignatureError
-from .handler import Handler
+from handler import Handler
 
 import os
 import requests
