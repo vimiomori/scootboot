@@ -21,19 +21,15 @@ class Handler:
             self._greet()
 
     def _greet(self):
-        print(1)
         user_profile = self._get_profile(self.user_id)
-        print(2)
         display_name = user_profile["displayName"]
-        print(3)
         nick_name = self._nickname(display_name)
-        print(4)
-        self._send("Hmm?")
-        print(5)
+        res = self._send("Hmm?")
         time.sleep(2)
-        self._send(f"ooooOOOh! it's the {nick_name}!")
+        res = self._send(f"ooooOOOh! it's the {nick_name}!")
         time.sleep(1)
-        self._send("What do you want?")
+        res = self._send("What do you want?")
+        return res
 
     def _reply(self, msg):
         reply = self._get_reply(msg)
@@ -75,10 +71,9 @@ class Handler:
         if msg == "hello":
             return "fuck off"
         else:
-            return "pooop"
+            return "yeaaah, bebe"
     
     def _nickname(self, display_name):
         if display_name == "Garcia":
             return "graaacie"
-
 
