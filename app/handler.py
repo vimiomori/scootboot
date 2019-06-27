@@ -73,4 +73,6 @@ class Handler:
     def _nickname(self, display_name):
         if display_name == "Garcia":
             return "graaacie"
+        if "Vi" in display_name:
+            return "the voo"
 
