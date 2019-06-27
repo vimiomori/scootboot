@@ -70,8 +70,7 @@ class Handler:
             return "yeaaah, bebe"
     
     def _get_custom_res(self, display_name):
-        if display_name == "Garcia":
-            return "graaacie"
-        if "Vi" in display_name:
-            return "it's the Voo!"
-
+        with open('strings.json') as f:
+            nicknames = json.load(f)
+        return nicknames[display_name]
+        
