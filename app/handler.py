@@ -14,7 +14,7 @@ class Handler:
     
     def handle(self):
         msg_body = json.dumps({
-            "to": self.user_id,
+            "to": str(self.user_id),
             "messages": [
                 {
                     "type":"text",
