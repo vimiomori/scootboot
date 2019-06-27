@@ -19,7 +19,6 @@ CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    print(1)
     body = request.get_data(as_text=True)
 
     try:

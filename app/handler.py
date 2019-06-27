@@ -15,18 +15,21 @@ class Handler:
         self.user_id = event["source"]["userId"]
     
     def handle(self):
-        print(self.event_type)
         if self.event_type == "message":
-            print('needs to be here')
             self._reply(self.event["message"]["text"])
         if self.event_type == "follow":
             self._greet()
 
     def _greet(self):
+        print(1)
         user_profile = self._get_profile(self.user_id)
+        print(2)
         display_name = user_profile["displayName"]
+        print(3)
         nick_name = self._nickname(display_name)
+        print(4)
         self._send("Hmm?")
+        print(5)
         time.sleep(2)
         self._send(f"ooooOOOh! it's the {nick_name}!")
         time.sleep(1)
