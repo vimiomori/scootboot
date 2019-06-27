@@ -23,10 +23,9 @@ class Handler:
     def _greet(self):
         user_profile = self._get_profile(self.user_id)
         display_name = user_profile["displayName"]
-        res = self._send("Hmm?")
-        res = self._send(f"ooooOOOh! it's the {self._nickname(display_name)}!")
-        res = self._send("What do you want?")
-        return res
+        custom_res = self._get_custom_response(display_name)
+        self._send(custom_res)
+
 
     def _reply(self, msg):
         reply = self._get_reply(msg)
@@ -70,9 +69,9 @@ class Handler:
         else:
             return "yeaaah, bebe"
     
-    def _nickname(self, display_name):
+    def _get_custom_res(self, display_name):
         if display_name == "Garcia":
             return "graaacie"
         if "Vi" in display_name:
-            return "the voo"
+            return "it's the Voo!"
 
