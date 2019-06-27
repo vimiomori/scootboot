@@ -74,6 +74,8 @@ class Handler:
     def _get_reply(self, msg):
         if msg == "hello":
             return "fuck off"
+        else:
+            return "pooop"
     
     def _nickname(self, display_name):
         if display_name == "Garcia":
