@@ -1,48 +1,43 @@
 from flask import Flask, request, abort
+from linebot.exceptions import InvalidSignatureError
+from .handler import Handler
 
-from linebot import (
-    LineBotApi, WebhookHandler
-)
-from linebot.exceptions import (
-    InvalidSignatureError
-)
-from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
-)
 import os
+import requests
+import json
+
+import base64
+import hashlib
+import hmac
+
 
 app = Flask(__name__)
 
 #環境変数取得
-YOUR_CHANNEL_ACCESS_TOKEN = os.environ["CHANNEL_ACCESS_TOKEN"]
-YOUR_CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
-
-line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
-handler = WebhookHandler(YOUR_CHANNEL_SECRET)
+CHANNEL_ACCESS_TOKEN = os.environ["CHANNEL_ACCESS_TOKEN"]
+CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
 
 @app.route("/callback", methods=['POST'])
 def callback():
-    # get X-Line-Signature header value
-    signature = request.headers['X-Line-Signature']
+    body = request.get_json()
 
     # get request body as text
-    body = request.get_data(as_text=True)
     app.logger.info("Request body: " + body)
 
     # handle webhook body
     try:
-        handler.handle(body, signature)
+        hash = hmac.new(CHANNEL_SECRET.encode('utf-8'),
+                        request.get_data(as_text).encode('utf-8'),
+                        hashlib.sha256).digest()
+        signature = base64.b64encode(hash)
+        if signature != request.headers['X-Line-Signature']:
+            raise InvalidSignatureError
+        for event in json.loads(body["events"]):
+            Handler.handle(event)
     except InvalidSignatureError:
         abort(400)
 
     return 'OK'
-
-
-@handler.add(MessageEvent, message=TextMessage)
-def handle_message(event):
-    line_bot_api.reply_message(
-        event.reply_token,
-        TextSendMessage(text=event.message.text))
 
 
 if __name__ == "__main__":
