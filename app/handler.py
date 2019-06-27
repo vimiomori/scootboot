@@ -24,9 +24,7 @@ class Handler:
         user_profile = self._get_profile(self.user_id)
         display_name = user_profile["displayName"]
         res = self._send("Hmm?")
-        time.sleep(2)
         res = self._send(f"ooooOOOh! it's the {self._nickname(display_name)}!")
-        time.sleep(1)
         res = self._send("What do you want?")
         return res
 
