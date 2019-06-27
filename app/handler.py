@@ -13,9 +13,8 @@ class Handler:
         self.user_id = event["source"]["userId"]
     
     def handle(self):
-        user_id = self.user_id
         msg_body = json.dumps({
-            "to": user_id,
+            "to": self.user_id,
             "messages": [
                 {
                     "type":"text",
