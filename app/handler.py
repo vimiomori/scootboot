@@ -23,7 +23,7 @@ class Handler:
     def _greet(self):
         user_profile = self._get_profile(self.user_id)
         display_name = user_profile["displayName"]
-        custom_res = self._get_custom_response(display_name)
+        custom_res = self._get_custom_res(display_name)
         self._send(custom_res)
 
 
