@@ -10,22 +10,22 @@ class Handler:
 
     def __init__(self, event):
         self.event = event
-        self.reply_token = event["replyToken"]
         self.event_type = event["type"]
         self.user_id = event["source"]["userId"]
     
     def handle(self):
+        if self.event_type != "unfollow":
+            return
+        else:
+            self.reply_token = event["replyToken"]
         if self.event_type == "message":
             self._reply(self.event["message"]["text"])
         if self.event_type == "follow":
             self._greet()
 
     def _greet(self):
-        user_profile = self._get_profile(self.user_id)
-        display_name = user_profile["displayName"]
-        custom_res = self._get_custom_res(display_name)
+        custom_res = self._get_custom_res(self._get_user_profile(self.user_id)["displayName"])
         self._send(custom_res)
-
 
     def _reply(self, msg):
         reply = self._get_reply(msg)
