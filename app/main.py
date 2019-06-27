@@ -33,9 +33,9 @@ def callback():
                         body.encode('utf-8'),
                         hashlib.sha256).digest()
         signature = base64.b64encode(hash)
-        if signature != request.headers['X-Line-Signature']:
-            print(3)
-            raise InvalidSignatureError
+        # if signature != request.headers['X-Line-Signature']:
+        #     print(3)
+        #     raise InvalidSignatureError
         for event in json.loads(body.get_json()["events"]):
             Handler.handle(event)
     except InvalidSignatureError:
