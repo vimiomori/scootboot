@@ -17,7 +17,7 @@ class Handler:
         if self.event_type != "unfollow":
             return
         else:
-            self.reply_token = event["replyToken"]
+            self.reply_token = self.event["replyToken"]
         if self.event_type == "message":
             self._reply(self.event["message"]["text"])
         if self.event_type == "follow":
