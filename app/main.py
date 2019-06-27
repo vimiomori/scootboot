@@ -20,7 +20,7 @@ CHANNEL_SECRET = os.environ["CHANNEL_SECRET"]
 @app.route("/callback", methods=['POST'])
 def callback():
     print(1)
-    body = request.get_json()
+    body = request.get_data(as_text=True)
 
     # get request body as text
     app.logger.info("Request body: " + body)
@@ -29,12 +29,12 @@ def callback():
     try:
         print(2)
         hash = hmac.new(CHANNEL_SECRET.encode('utf-8'),
-                        request.get_data(as_text=True).encode('utf-8'),
+                        body.encode('utf-8'),
                         hashlib.sha256).digest()
         signature = base64.b64encode(hash)
         if signature != request.headers['X-Line-Signature']:
             raise InvalidSignatureError
-        for event in json.loads(body["events"]):
+        for event in json.loads(body.get_json()["events"]):
             Handler.handle(event)
     except InvalidSignatureError:
         abort(400)
