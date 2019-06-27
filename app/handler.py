@@ -17,7 +17,7 @@ class Handler:
     def handle(self):
         print(self.event_type)
         if self.event_type == "message":
-            self._reply(self.event["message"])
+            self._reply(self.event["message"]["text"])
         if self.event_type == "follow":
             self._greet()
 
