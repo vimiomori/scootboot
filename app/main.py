@@ -36,7 +36,8 @@ def callback():
         # if signature != request.headers['X-Line-Signature']:
         #     print(3)
         #     raise InvalidSignatureError
-        for event in json.loads(request.get_json())["events"]:
+        for event in request.get_json()["events"]:
+            print(type(event))
             Handler.handle(event)
     except InvalidSignatureError:
         abort(400)
