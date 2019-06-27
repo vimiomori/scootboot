@@ -15,6 +15,7 @@ class Handler:
         self.user_id = event["source"]["userId"]
     
     def handle(self):
+        print(self.event_type)
         if self.event_type == "message":
             self._reply(self.event["message"])
         if self.event_type == "follow":
