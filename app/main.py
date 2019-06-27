@@ -31,10 +31,11 @@ def callback():
         #     print(3)
         #     raise InvalidSignatureError
         for event in request.get_json()["events"]:
-            response = Handler(event).handle().json()
-            if response.get('message'):
-                print(response.get('message'))
-                print(response.get('details'))
+            res = Handler(event).handle()
+            if res.json():
+                if response.get('message'):
+                    print(response.get('message'))
+                    print(response.get('details'))
     except InvalidSignatureError:
         abort(400)
 
