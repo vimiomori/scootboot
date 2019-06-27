@@ -34,9 +34,7 @@ def callback():
             response = Handler(event).handle().json()
             if response.get('message'):
                 print(response.get('message'))
-                # if response.get('details'):
-                #     for detail in response['details']:
-                #         [print(key.upper(): value) for key, value in detail.items()]
+                print(response.get('details'))
     except InvalidSignatureError:
         abort(400)
 
