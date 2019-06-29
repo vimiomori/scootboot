@@ -22,7 +22,7 @@ class Handler:
         if self.event_type == "message":
             reply = self._get_reply("default")
         if self.event_type == "follow":
-            reply = self._get_reply(self._get_profile(self.user_id)["displayName"])
+            reply = self._get_reply(self._get_profile(self.user_id))
         self._reply(reply)
 
     def _reply(self, reply):
