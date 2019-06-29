@@ -24,7 +24,7 @@ class Handler:
             self._greet()
 
     def _greet(self):
-        custom_res = self._get_custom_res(self._get_user_profile(self.user_id)["displayName"])
+        custom_res = self._get_custom_res(self._get_profile(self.user_id)["displayName"])
         message = self._construct_message(custom_res)
         self._send(custom_res)
 
