@@ -66,7 +66,7 @@ class Handler:
             return "yeaaah, bebe"
     
     def _get_custom_res(self, display_name):
-        with open('nicknames.json') as f:
+        with open('response.json') as f:
             nicknames = json.load(f)
         return nicknames[display_name]
     
