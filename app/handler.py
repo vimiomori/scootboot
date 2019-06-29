@@ -69,7 +69,7 @@ class Handler:
             response = json.load(f)
         if display_name == "default":
             num_choices = len(response)
-            choice = randint(0, 9)
+            choice = randint(0, num_choices)
             print(response[display_name])
             return response[display_name].pop(choice)
         else:
