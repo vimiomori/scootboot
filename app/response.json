@@ -51,6 +51,11 @@
         "type": "text",
         "response": "What the fuck? "
     },
+    "Daniel Ponce": {
+        "type": "image",
+        "response": "https://live.staticflickr.com/65535/48150666046_d13f9a4e01.jpg"
+
+    },
     "default": [
         {
             "type": "text",
@@ -97,6 +102,14 @@
                 "type": "image",
                 "response": "https://live.staticflickr.com/65535/48149571521_0173836809_b.jpg"
             }
-        ]
+        ],
+        {
+            "type": "image",
+            "response": "https://live.staticflickr.com/65535/48149567441_1b05cdb758_k.jpg"
+        },
+        {
+            "type": "image",
+            "response": "https://live.staticflickr.com/65535/48150655901_812d72f687_b.jpg"
+        }
     ]
 }
