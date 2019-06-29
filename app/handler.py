@@ -28,15 +28,14 @@ class Handler:
         if len(custom_res) > 1:
             r = None
             for res in custom_res:
-                message = self._construct_message(res)
-                r = self._send(message)
+                r = self._send(res)
             return r
 
     def _reply(self, msg):
         reply = self._get_reply(msg)
         self._send(reply)
 
-    def _send(self, msg):
+    def _send(self, custom_res):
         msg_body = json.dumps({
             "replyToken": self.reply_token,
             "messages": [self._construct_message(custom_res)]
