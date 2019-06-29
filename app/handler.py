@@ -19,7 +19,7 @@ class Handler:
         else:
             self.reply_token = self.event["replyToken"]
         if self.event_type == "message":
-            reply = self._get_reply(["default"])
+            reply = self._get_reply("default")
         if self.event_type == "follow":
             reply = self._get_reply(self._get_profile(self.user_id)["displayName"])
         self._greet(reply)
