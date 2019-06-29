@@ -20,6 +20,41 @@
         "response": "it's the voo!"
     },
     "default": [
-        "IT'S A SOLID BIT!"
+        {
+            "type": "text",
+            "response": "IT'S A SOLID BIT!"
+        },
+        {
+            "type": "text",
+            "response": "Poor bebe"
+        },
+        {
+            "type": "text",
+            "response": "That's fucking productive"
+        },
+        {
+            "type": "text",
+            "reponse": "You got a problem?"
+        },
+        {
+            "type": "text",
+            "response": "Hmm?"
+        },
+        {
+            "type": "text",
+            "response": "Cool shit"
+        },
+        {
+            "type": "text",
+            "response": "Runnin' it back"
+        },
+        {
+            "type": "text",
+            "response": "woooooops"
+        },
+        {
+            "type": "text",
+            "response": "hahahahahahahah"
+        }
     ]
 }
