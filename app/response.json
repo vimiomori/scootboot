@@ -5,7 +5,7 @@
             "response": "Who do you think you are?"
         },
         {
-            "type": "img",
+            "type": "image",
             "response": "https://live.staticflickr.com/65535/48149571341_44c20a3276_z.jpg"
         }
     ]
@@ -25,7 +25,7 @@
         }
     ],
     "Garcia": {
-        "type": "img",
+        "type": "image",
         "response": "https://live.staticflickr.com/65535/48137930817_a14540fc22_b.jpg"
     },
     "Vi": {
