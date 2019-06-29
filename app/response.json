@@ -88,9 +88,11 @@
             "type": "text",
             "response": "hahahahahahahah"
         },
-        {
-            "type": "image",
-            "response": "https://live.staticflickr.com/65535/48149571521_0173836809_b.jpg"
-        }
+        [
+            {
+                "type": "image",
+                "response": "https://live.staticflickr.com/65535/48149571521_0173836809_b.jpg"
+            }
+        ]
     ]
 }
