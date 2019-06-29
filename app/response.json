@@ -31,6 +31,26 @@
         "type": "text",
         "response": "it's the voo!"
     },
+    "れあ": {
+        "type": "text",
+        "response": "your face is happy birthday"
+    },
+    "Aaronあーろん": {
+        "type": "text",
+        "response": ""
+    },
+    "Nate H": {
+        "type": "text",
+        "response": "Nateさん、誕生日会はバスで一緒に行こう"
+    },
+    "よしこ": {
+        "type": "text",
+        "response": "yoshi, yoshi, yoshi yoshi yoshiiiii!"
+    },
+    "島田": {
+        "type": "text",
+        "response": ""
+    },
     "default": [
         {
             "type": "text",

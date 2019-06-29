@@ -62,7 +62,6 @@ class Handler:
             choice = randint(0, num_choices)
             return response[display_name][choice]
         else:
-            display_name = "スコフリン Scott"
             return response[display_name]
     
     def _construct_message(self, res):
