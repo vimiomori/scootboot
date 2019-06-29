@@ -32,7 +32,7 @@ class Handler:
                 r = self._send(res)
             return r
         else:
-            return self._send(res)
+            return self._send(reply)
 
     # def _reply(self, msg):
     #     reply = self._get_reply(msg)
