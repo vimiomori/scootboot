@@ -25,21 +25,17 @@ class Handler:
 
     def _greet(self):
         custom_res = self._get_custom_res(self._get_user_profile(self.user_id)["displayName"])
+        message = self._construct_message(custom_res)
         self._send(custom_res)
 
     def _reply(self, msg):
         reply = self._get_reply(msg)
         self._send(reply)
 
-    def _send(self, msg):
+    def _send(self, custom_res):
         msg_body = json.dumps({
             "replyToken": self.reply_token,
-            "messages": [
-                {
-                    "type":"image",
-                    "originalContentUrl":msg
-                }
-            ]
+            "messages": [self._construct_message(custom_res)]
         })
         headers = {
             "Content-Type": "application/json",
@@ -73,4 +69,11 @@ class Handler:
         with open('nicknames.json') as f:
             nicknames = json.load(f)
         return nicknames[display_name]
-        
+    
+    def _construct_message(self, res):
+        message = {"type": res.type}
+        if res.type == "img":
+            message["originalContentUrl"] = res.response
+        else:
+            message["message"] = res.response
+        return message

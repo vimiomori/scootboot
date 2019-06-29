@@ -1,5 +1,18 @@
 {
-    "スコフリン Scott": "uh",
-    "丹": "Daaaaaan!",
-    "Garcia": "https://live.staticflickr.com/65535/48137930817_a14540fc22_b.jpg"
+    "スコフリン Scott": {
+        "type": "text",
+        "response": ""
+    },
+    "丹": {
+        "type": "text",
+        "response":"Daaaaaan!",
+    },
+    "crista": {
+        "type": "text",
+        "response": "",
+    },
+    "Garcia": {
+        "type": "img",
+        "response": "https://live.staticflickr.com/65535/48137930817_a14540fc22_b.jpg"
+    },
 }
