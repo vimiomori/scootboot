@@ -70,6 +70,7 @@ class Handler:
         if display_name == "default":
             num_choices = len(response)
             choice = randint(0, 9)
+            print(response[display_name])
             return response[display_name].pop(choice)
         else:
             return response[display_name]
