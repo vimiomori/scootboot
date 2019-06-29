@@ -14,7 +14,7 @@ class Handler:
         self.user_id = event["source"]["userId"]
     
     def handle(self):
-        if self.event_type != "unfollow":
+        if self.event_type == "unfollow":
             return
         else:
             self.reply_token = self.event["replyToken"]
