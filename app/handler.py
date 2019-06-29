@@ -74,8 +74,9 @@ class Handler:
             return response[display_name]
     
     def _construct_message(self, res):
+        print(res)
         message = {"type": res["type"]}
-        if res.type == "img":
+        if res["type"] == "img":
             message["originalContentUrl"] = res["response"]
         else:
             message["message"] = res["response"]
