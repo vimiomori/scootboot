@@ -1,15 +1,14 @@
 {
     "スコフリン Scott": [
         {
-            "type": "text",
-            "response": "Who do you think you are?"
-        },
-        {
             "type": "image",
             "response": "https://live.staticflickr.com/65535/48149571341_44c20a3276_z.jpg"
+        },
+        {
+            "type": "text",
+            "response": "who do you think you are?"
         }
-    ]
-    ,
+    ],
     "丹": {
         "type": "text",
         "response":"Daaaaaan!"
