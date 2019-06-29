@@ -25,14 +25,18 @@ class Handler:
 
     def _greet(self):
         custom_res = self._get_custom_res(self._get_profile(self.user_id)["displayName"])
-        message = self._construct_message(custom_res)
-        self._send(custom_res)
+        if len(custom_res) > 1:
+            r = None
+            for res in custom_res:
+                message = self._construct_message(res)
+                r = self._send(message)
+            return r
 
     def _reply(self, msg):
         reply = self._get_reply(msg)
         self._send(reply)
 
-    def _send(self, custom_res):
+    def _send(self, msg):
         msg_body = json.dumps({
             "replyToken": self.reply_token,
             "messages": [self._construct_message(custom_res)]
@@ -41,7 +45,7 @@ class Handler:
             "Content-Type": "application/json",
             "Authorization": "Bearer " + CHANNEL_ACCESS_TOKEN
         }
-        return requests.post(
+        requests.post(
             END_POINT,
             params={'access_token': CHANNEL_ACCESS_TOKEN},
             headers=headers,
@@ -55,20 +59,19 @@ class Handler:
         }
         res = requests.get(url, headers=header, timeout=(0.3, 1))
         if res.status_code == 200:
-            return res.json()
+            return res.json()["displayName"].encode('ascii', 'ignore').decode('ascii')
         else:
             print(res)
-    
-    def _get_reply(self, msg):
-        if msg == "hello":
-            return "fuck off"
-        else:
-            return "yeaaah, bebe"
     
     def _get_custom_res(self, display_name):
         with open('app/response.json') as f:
             nicknames = json.load(f)
         return nicknames[display_name]
+    
+    def _get_reply(self, display_name):
+        with open('app/response.json') as f:
+            reply = json.load(f)
+        return reply["default"]
     
     def _construct_message(self, res):
         message = {"type": res.type}
