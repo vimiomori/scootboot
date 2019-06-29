@@ -1,12 +1,12 @@
 {
     "スコフリン Scott": [
         {
-            "type": "img",
-            "response": ""
+            "type": "text",
+            "response": "Who do you think you are?"
         },
         {
-            "type": "text",
-            "response": ""
+            "type": "img",
+            "response": "https://live.staticflickr.com/65535/48149571341_44c20a3276_z.jpg"
         }
     ]
     ,
@@ -14,10 +14,16 @@
         "type": "text",
         "response":"Daaaaaan!"
     },
-    "crista": {
-        "type": "text",
-        "response": ""
-    },
+    "crista": [
+        {
+            "type": "text",
+            "response": "Got a new addition to my tight 5"
+        },
+        {
+            "type": "text",
+            "response": "Gunna need your support on this one"
+        }
+    ],
     "Garcia": {
         "type": "img",
         "response": "https://live.staticflickr.com/65535/48137930817_a14540fc22_b.jpg"
