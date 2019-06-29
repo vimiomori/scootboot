@@ -2,6 +2,7 @@ import requests
 import os
 import json
 import time
+from random import randint
 
 
 END_POINT = "https://api.line.me/v2/bot/message/reply"
@@ -64,8 +65,13 @@ class Handler:
     
     def _get_reply(self, display_name):
         with open('app/response.json') as f:
-            nicknames = json.load(f)
-        return nicknames[display_name]
+            response = json.load(f)
+        if display_name == "default":
+            num_choices = len(response)
+            choice = randint(0, 9)
+            return response[display_name].pop(choice)
+        else:
+            return response[display_name]
     
     def _construct_message(self, res):
         message = {"type": res["type"]}
