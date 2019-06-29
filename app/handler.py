@@ -70,7 +70,7 @@ class Handler:
         if res["type"] == "image":
             message["originalContentUrl"] = res["response"]
             message["previewImageUrl"] = res["response"]
-        elif self.event_type == "message" and self.event["message"]["text"].split("!").lower() == "bust a nut":
+        elif self.event_type == "message" and self.event["message"]["text"].split("!")[0].lower() == "bust a nut":
             message["text"] = "なんだ、想ちゃんじゃん"
         else:
             message["text"] = res["response"]
