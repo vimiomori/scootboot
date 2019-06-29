@@ -37,7 +37,7 @@
     },
     "Aaronあーろん": {
         "type": "text",
-        "response": ""
+        "response": "I don't play well with others."
     },
     "Nate H": {
         "type": "text",
@@ -47,9 +47,9 @@
         "type": "text",
         "response": "yoshi, yoshi, yoshi yoshi yoshiiiii!"
     },
-    "島田": {
+    "想": {
         "type": "text",
-        "response": ""
+        "response": "What the fuck?"
     },
     "default": [
         {
