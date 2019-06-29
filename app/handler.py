@@ -37,6 +37,7 @@ class Handler:
     #     self._send(reply)
 
     def _send(self, custom_res):
+        print(custom_res)
         msg_body = json.dumps({
             "replyToken": self.reply_token,
             "messages": [self._construct_message(custom_res)]
