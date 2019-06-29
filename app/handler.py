@@ -47,7 +47,7 @@ class Handler:
             "Content-Type": "application/json",
             "Authorization": "Bearer " + CHANNEL_ACCESS_TOKEN
         }
-        requests.post(
+        return requests.post(
             END_POINT,
             params={'access_token': CHANNEL_ACCESS_TOKEN},
             headers=headers,
