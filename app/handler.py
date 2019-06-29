@@ -81,6 +81,7 @@ class Handler:
         message = {"type": res["type"]}
         if res["type"] == "image":
             message["originalContentUrl"] = res["response"]
+            message["previewImageUrl"] = res["response"]
         else:
             message["text"] = res["response"]
         return message
