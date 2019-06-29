@@ -19,7 +19,7 @@
         "type": "text",
         "response": "it's the voo!"
     },
-    "default": {
+    "default": [
         "IT'S A SOLID BIT!"
-    }
+    ]
 }
