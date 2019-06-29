@@ -68,9 +68,9 @@ class Handler:
         return nicknames[display_name]
     
     def _construct_message(self, res):
-        message = {"type": res.type}
+        message = {"type": res["type"]}
         if res.type == "img":
-            message["originalContentUrl"] = res.response
+            message["originalContentUrl"] = res["response"]
         else:
-            message["message"] = res.response
+            message["message"] = res["response"]
         return message
