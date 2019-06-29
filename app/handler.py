@@ -62,14 +62,16 @@ class Handler:
             choice = randint(0, num_choices)
             return response[display_name][choice]
         else:
+            display_name = "想"
             return response[display_name]
     
     def _construct_message(self, res):
-        print(res)
         message = {"type": res["type"]}
         if res["type"] == "image":
             message["originalContentUrl"] = res["response"]
             message["previewImageUrl"] = res["response"]
+        elif self.event["message"]["text"].split("!").lower() == "bust a nut":
+            message["text"] = "なんだ、想ちゃんじゃん"
         else:
             message["text"] = res["response"]
         return message
