@@ -110,6 +110,30 @@
         {
             "type": "image",
             "response": "https://live.staticflickr.com/65535/48150655901_812d72f687_b.jpg"
+        },
+        {
+            "type": "text",
+            "response": "shut up! go away!"
+        },
+        {
+            "type": "text",
+            "response": "get off of me!"
+        },
+        {
+            "type": "text",
+            "response": "oh you like that?"
+        }, 
+        {
+            "type": "test",
+            "response": "such a piece of shit"
+        },
+        {
+            "type": "text",
+            "response": "いいね"
+        },
+        {
+            "type": "text",
+            "response": "yeeeaaah"
         }
     ]
 }
