@@ -1,8 +1,15 @@
 {
-    "スコフリン Scott": {
-        "type": "text",
-        "response": ""
-    },
+    "スコフリン Scott": [
+        {
+            "type": "img",
+            "response": ""
+        },
+        {
+            "type": "text",
+            "response": ""
+        }
+    ]
+    ,
     "丹": {
         "type": "text",
         "response":"Daaaaaan!"

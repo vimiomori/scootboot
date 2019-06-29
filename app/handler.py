@@ -19,21 +19,21 @@ class Handler:
         else:
             self.reply_token = self.event["replyToken"]
         if self.event_type == "message":
-            self._reply(self.event["message"]["text"])
+            reply = self._get_reply(["default"])
         if self.event_type == "follow":
-            self._greet()
+            reply = self._get_reply(self._get_profile(self.user_id)["displayName"])
+        self._greet(reply)
 
-    def _greet(self):
-        custom_res = self._get_custom_res(self._get_profile(self.user_id)["displayName"])
-        if len(custom_res) > 1:
+    def _greet(self, reply):
+        if len(reply) > 1:
             r = None
-            for res in custom_res:
+            for res in reply:
                 r = self._send(res)
             return r
 
-    def _reply(self, msg):
-        reply = self._get_reply(msg)
-        self._send(reply)
+    # def _reply(self, msg):
+    #     reply = self._get_reply(msg)
+    #     self._send(reply)
 
     def _send(self, custom_res):
         msg_body = json.dumps({
@@ -62,15 +62,10 @@ class Handler:
         else:
             print(res)
     
-    def _get_custom_res(self, display_name):
+    def _get_reply(self, display_name):
         with open('app/response.json') as f:
             nicknames = json.load(f)
         return nicknames[display_name]
-    
-    def _get_reply(self, display_name):
-        with open('app/response.json') as f:
-            reply = json.load(f)
-        return reply["default"]
     
     def _construct_message(self, res):
         message = {"type": res.type}
