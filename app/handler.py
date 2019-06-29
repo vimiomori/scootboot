@@ -23,21 +23,22 @@ class Handler:
             reply = self._get_reply("default")
         if self.event_type == "follow":
             reply = self._get_reply(self._get_profile(self.user_id)["displayName"])
-        self._greet(reply)
+        self._reply(reply)
 
-    def _greet(self, reply):
-        if len(reply) > 1:
+    def _reply(self, reply):
+        if type(reply) == list:
             r = None
             for res in reply:
                 r = self._send(res)
             return r
+        else:
+            return self._send(res)
 
     # def _reply(self, msg):
     #     reply = self._get_reply(msg)
     #     self._send(reply)
 
     def _send(self, custom_res):
-        print(custom_res)
         msg_body = json.dumps({
             "replyToken": self.reply_token,
             "messages": [self._construct_message(custom_res)]
@@ -70,8 +71,7 @@ class Handler:
         if display_name == "default":
             num_choices = len(response)
             choice = randint(0, num_choices)
-            print(response[display_name])
-            return response[display_name].pop(choice)
+            return response[display_name][choice]
         else:
             return response[display_name]
     
