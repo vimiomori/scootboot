@@ -23,25 +23,14 @@ class Handler:
             reply = self._get_reply("default")
         if self.event_type == "follow":
             reply = self._get_reply(self._get_profile(self.user_id))
-        self._reply(reply)
+        self._send(reply)
 
-    def _reply(self, reply):
-        if type(reply) == list:
-            r = None
-            for res in reply:
-                r = self._send(res)
-            return r
-        else:
-            return self._send(reply)
-
-    # def _reply(self, msg):
-    #     reply = self._get_reply(msg)
-    #     self._send(reply)
-
-    def _send(self, custom_res):
+    def _send(self, reply):
+        if type(reply) != list:
+            reply = [reply]
         msg_body = json.dumps({
             "replyToken": self.reply_token,
-            "messages": [self._construct_message(custom_res)]
+            "messages": [self._construct_message(r) for r in reply]
         })
         headers = {
             "Content-Type": "application/json",
