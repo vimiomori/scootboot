@@ -14,6 +14,9 @@ def get_response(prompt):
     text = response["choices"][0]["text"]
     for remove in remove_list:
         text = text.replace(remove, "")
+    
+    if text[0:3] == " ? ":
+        text = text.replace(" ? ", "")
 
     text = text.split("\n")
     return [{"type": "text", "response": t} for t in text if t != ""]
