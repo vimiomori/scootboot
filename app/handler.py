@@ -3,6 +3,7 @@ import os
 import json
 import time
 from random import randint
+from ..openai_bot.bot import get_response
 
 
 END_POINT = "https://api.line.me/v2/bot/message/reply"
@@ -20,9 +21,9 @@ class Handler:
         else:
             self.reply_token = self.event["replyToken"]
         if self.event_type == "message":
-            reply = self._get_reply("default")
+            reply = self._get_reply()
         if self.event_type == "follow":
-            reply = self._get_reply(self._get_profile(self.user_id))
+            reply = self._get_follow_reply(self._get_profile(self.user_id))
         self._send(reply)
 
     def _send(self, reply):
@@ -54,7 +55,11 @@ class Handler:
         else:
             print(res)
     
-    def _get_reply(self, display_name):
+    def _get_reply(self):
+        prompt = self.event["message"]["text"]
+        return get_response(prompt)
+
+    def _get_follow_reply(self, display_name):
         with open('app/response.json') as f:
             response = json.load(f)
         if display_name == "default":
