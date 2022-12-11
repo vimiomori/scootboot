@@ -9,7 +9,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 remove_list = ["\n\n###\n\n", "\r", "\t", "END"]
 
 def get_response(prompt):
-    response = openai.Completion.create(model=MODEL, prompt=prompt, temperature=0.9, max_tokens=30)
+    response = openai.Completion.create(model=MODEL, prompt=prompt, temperature=0.9, max_tokens=25)
     text = response["choices"][0]["text"]
     for remove in remove_list:
         text = text.replace(remove, "")
