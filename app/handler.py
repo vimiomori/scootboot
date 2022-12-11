@@ -3,7 +3,7 @@ import os
 import json
 import time
 from random import randint
-from ..openai_bot.bot import get_response
+from openai_bot.bot import get_response
 
 
 END_POINT = "https://api.line.me/v2/bot/message/reply"
